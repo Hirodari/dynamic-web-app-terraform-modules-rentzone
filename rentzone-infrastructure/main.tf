@@ -24,7 +24,7 @@ module "vpc" {
 
 module "natgateway" {
   source                     = "git@github.com:Hirodari/dynamic-web-app-terraform-modules-rentzone.git//rentzone-modules/natgateway"
-  project_name               = local.region
+  project_name               = local.project_name
   environment                = local.environment
   public_subnet_az1_id       = module.vpc.public_subnet_az1_id
   public_subnet_az2_id       = module.vpc.public_subnet_az2_id
@@ -34,4 +34,14 @@ module "natgateway" {
   private_app_subnet_az2_id  = module.vpc.private_app_subnet_az2_id
   private_data_subnet_az1_id = module.vpc.private_data_subnet_az1_id
   private_data_subnet_az2_id = module.vpc.private_data_subnet_az2_id
+}
+
+# create Security Group
+
+module "natgateway" {
+  source                     = "git@github.com:Hirodari/dynamic-web-app-terraform-modules-rentzone.git//rentzone-modules/security-group"
+  project_name = local.project_name
+  environment = local.environment
+  vpc_id = module.vpc.vpc_id
+  ssh_ip = var.ssh_ip
 }
