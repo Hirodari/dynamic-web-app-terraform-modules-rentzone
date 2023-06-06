@@ -54,7 +54,7 @@ resource "aws_route_table" "private_route_table_az1" {
   }
 
   tags = {
-    Name = "${var.project_name}-${var.environment}-private-rt-az1"
+    Name = "${var.project_name} | ${var.environment} | Private-RT-az1"
   }
 }
 
@@ -80,7 +80,7 @@ resource "aws_route_table" "private_route_table_az2" {
   }
 
   tags = {
-    Name = "${var.project_name}-${var.environment}-private-rt-az2"
+    Name = "${var.project_name} | ${var.environment} | Private-RT-az2"
   }
 }
 
