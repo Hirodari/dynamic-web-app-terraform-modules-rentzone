@@ -16,13 +16,13 @@ data "aws_ami" "amazon_linux_2" {
 
 
 # launch the ec2 instance and install website
-resource "aws_instance" "ec2_instance" {
+resource "aws_instance" "ec2_instance_az1" {
   ami                    = data.aws_ami.amazon_linux_2
   instance_type          = var.instance_type
   subnet_id              = var.public_subnet_az1_id
   vpc_security_group_ids = var.application_sg_id
   key_name               = var.key_name
-  user_data              = file("install_rentzone.sh")
+  user_data              = file("conf/install_rentzone.sh")
 
   tags = {
     Name = "${var.project_name} | Rentzone Web App"
@@ -30,13 +30,13 @@ resource "aws_instance" "ec2_instance" {
 }
 
 # launch the ec2 instance and install website
-resource "aws_instance" "ec2_instance" {
+resource "aws_instance" "ec2_instance_az2" {
   ami                    = data.aws_ami.amazon_linux_2
   instance_type          = var.instance_type
   subnet_id              = var.public_subnet_az2_id
   vpc_security_group_ids = [var.application_sg_id]
   key_name               = var.key_name
-  user_data              = file("install_rentzone.sh")
+  user_data              = file("conf/install_rentzone.sh")
   
 
   tags = {
