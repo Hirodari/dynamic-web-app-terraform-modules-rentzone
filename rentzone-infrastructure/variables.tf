@@ -35,3 +35,7 @@ variable "cpu_architecture" {}
 
 # route-53 variables
 variable "record_name" {}
+
+# EC2 variables
+variable "key_name" {}
+variable "instance_type" {}

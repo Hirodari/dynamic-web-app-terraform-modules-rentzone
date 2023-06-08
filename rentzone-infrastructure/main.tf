@@ -66,6 +66,7 @@ module "database" {
 module "ec2" {
   source               = "git@github.com:Hirodari/dynamic-web-app-terraform-modules-rentzone.git//rentzone-modules/ec2"
   project_name         = local.project_name
+  instance_type        = var.instance_type
   public_subnet_az1_id = module.vpc.public_subnet_az1_id
   public_subnet_az2_id = module.vpc.public_subnet_az2_id
   application_sg_id    = module.security-group.application_sg_id

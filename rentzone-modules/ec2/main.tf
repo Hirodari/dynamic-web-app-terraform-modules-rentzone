@@ -54,5 +54,4 @@ resource "aws_instance" "ec2_instance_az2" {
 
 # print the ec2's public ipv4 address
 output "public_ipv4_address" {
-  value = aws_instance.ec2_instance.public_ip
-}
+  value = aws_instance.ec2_instance_az1.public_ipv4_address
