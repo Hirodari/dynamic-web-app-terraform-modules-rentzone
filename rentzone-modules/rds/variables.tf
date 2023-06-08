@@ -2,8 +2,8 @@
 variable "project_name" {}
 variable "environment" {}
 # vpc environment
-variable "private_app_subnet_az1_id" {}
-variable "private_app_subnet_az2_id" {}
+variable "private_data_subnet_az1_id" {}
+variable "private_data_subnet_az2_id" {}
 # rds environment
 variable "db_snapshot_identifier" {}
 variable "db_instance_class" {}
