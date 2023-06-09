@@ -37,7 +37,7 @@ resource "null_resource" "file_transport_1" {
     host        = aws_instance.ec2_instance_az1.public_ip
   }
 
-  provisioner "file" {
+  provisioner "file1" {
     source      = "conf/AppServiceProvider.php"
     destination = "/var/www/html/app/Providers/AppServiceProvider.php"
   }
@@ -56,7 +56,7 @@ resource "aws_instance" "ec2_instance_az2" {
   user_data              = file("conf/install_rentzone.sh")
 
   tags = {
-    Name = "${var.project_name} | Rentzone Web App AZ1"
+    Name = "${var.project_name} | Rentzone Web App AZ2"
   }
 }
 
@@ -68,7 +68,7 @@ resource "null_resource" "file_transport_2" {
     host        = aws_instance.ec2_instance_az2.public_ip
   }
 
-  provisioner "file" {
+  provisioner "file2" {
     source      = "conf/AppServiceProvider.php"
     destination = "/var/www/html/app/Providers/AppServiceProvider.php"
   }
