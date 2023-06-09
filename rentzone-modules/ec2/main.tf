@@ -30,17 +30,21 @@ resource "aws_instance" "ec2_instance_az1" {
 }
 
 resource "null_resource" "file_transport" {
+  connection {
+    type        = "ssh"
+    user        = "ec2-user"
+    private_key = file("/home/hiro/Documents/AOS_docs/dynamic-ecommerce/hiro_kp.pem")
+    host        = aws_instance.ec2_instance_az1.public_ip
+  }
+
   provisioner "file" {
     source      = "/home/hiro/Documents/AOS_docs/dynamic-web-app-terraform-modules-rentzone/rentzone-infrastructure/conf/install_rentzone.sh"
     destination = "/home/ec2-user/install_rentzone.sh"
   }
-  connection {
-    type        = "ssh"
-    user        = "ec2-user"
-    private_key = "${file("/home/hiro/Documents/AOS_docs/dynamic-ecommerce/hiro_kp.pem")}"
-    host        = aws_instance.ec2_instance_az1.public_dns
-  }
+
+  depends_on = [ aws_instance.ec2_instance_az1 ]
 }
+
 
 # launch the ec2 instance and install website
 # resource "aws_instance" "ec2_instance_az2" {
