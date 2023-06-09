@@ -29,7 +29,7 @@ resource "aws_instance" "ec2_instance_az1" {
   }
 }
 
-resource "null_resource" "file_transport 1" {
+resource "null_resource" "file_transport_1" {
   connection {
     type        = "ssh"
     user        = "ec2-user"
@@ -60,12 +60,12 @@ resource "aws_instance" "ec2_instance_az2" {
   }
 }
 
-resource "null_resource" "file_transport 2" {
+resource "null_resource" "file_transport_2" {
   connection {
     type        = "ssh"
     user        = "ec2-user"
     private_key = file("/home/hiro/Documents/AOS_docs/dynamic-ecommerce/hiro_kp.pem")
-    host        = aws_instance.ec2_instance_az1.public_ip
+    host        = aws_instance.ec2_instance_az2.public_ip
   }
 
   provisioner "file" {
