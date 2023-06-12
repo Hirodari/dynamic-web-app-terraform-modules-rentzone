@@ -84,4 +84,6 @@ module "alb" {
   public_subnet_az2_id = module.vpc.public_subnet_az2_id
   vpc_id               = module.vpc.vpc_id
   certificate_arn      = var.certificate_arn
+  ec2_instance_az1_id   = module.ec2.ec2_instance_az1_id
+  ec2_instance_az2_id   = module.ec2.ec2_instance_az2_id
 }

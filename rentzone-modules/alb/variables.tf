@@ -5,3 +5,5 @@ variable "public_subnet_az1_id" {}
 variable "public_subnet_az2_id" {}
 variable "vpc_id" {}
 variable "certificate_arn" {}
+variable "ec2_instance_az1_id" {}
+variable "ec2_instance_az2_id" {}
