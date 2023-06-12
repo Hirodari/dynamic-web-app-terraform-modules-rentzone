@@ -8,7 +8,7 @@ resource "aws_lb" "application_load_balancer" {
   enable_deletion_protection = false
 
   tags = {
-    Name = "${var.project_name} | ALB"
+    Name = "${var.project_name}-ALB"
   }
 }
 
