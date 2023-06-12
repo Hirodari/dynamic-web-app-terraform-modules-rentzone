@@ -36,7 +36,13 @@ resource "aws_lb_target_group" "alb_target_group" {
 
 resource "aws_lb_target_group_attachment" "test" {
   target_group_arn = aws_lb_target_group.alb_target_group.arn
-  target_id        = [var.ec2_instance_az1_id, var.ec2_instance_az2_id]
+  target_id        = var.ec2_instance_az1_id
+  port             = 80
+}
+
+resource "aws_lb_target_group_attachment" "test" {
+  target_group_arn = aws_lb_target_group.alb_target_group.arn
+  target_id        = var.ec2_instance_az2_id
   port             = 80
 }
 
