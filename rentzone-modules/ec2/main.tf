@@ -48,14 +48,6 @@ resource "null_resource" "file_transport_1" {
   }
 
 
-  provisioner "remote-exec" {
-    inline = [ 
-      "chmod +x /home/ec2-user/install_aws_cli.sh",
-      "bash install_aws_cli.sh",
-      "bash install_rentzone.sh"
-     ]
-  }
-
   provisioner "file" {
     source      = "conf/AppServiceProvider.php"
     destination = "/home/ec2-user/AppServiceProvider.php"
@@ -63,6 +55,13 @@ resource "null_resource" "file_transport_1" {
 
   provisioner "remote-exec" {
     inline = [ 
+      "bash install_aws_cli.sh"
+     ]
+  }
+
+  provisioner "remote-exec" {
+    inline = [ 
+      "bash install_rentzone.sh",
       "mv AppServiceProvider.php /var/www/html/app/Providers/"
      ]
   }
@@ -103,15 +102,6 @@ resource "null_resource" "file_transport_2" {
     destination = "/home/ec2-user/install_rentzone.sh"
   }
 
-
-  provisioner "remote-exec" {
-    inline = [ 
-      "chmod +x /home/ec2-user/install_aws_cli.sh",
-      "bash install_aws_cli.sh",
-      "bash install_rentzone.sh"
-     ]
-  }
-
   provisioner "file" {
     source      = "conf/AppServiceProvider.php"
     destination = "/home/ec2-user/AppServiceProvider.php"
@@ -119,6 +109,13 @@ resource "null_resource" "file_transport_2" {
 
   provisioner "remote-exec" {
     inline = [ 
+      "bash install_aws_cli.sh"
+     ]
+  }
+
+  provisioner "remote-exec" {
+    inline = [ 
+      "bash install_rentzone.sh",
       "mv AppServiceProvider.php /var/www/html/app/Providers/"
      ]
   }
