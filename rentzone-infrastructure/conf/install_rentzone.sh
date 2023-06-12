@@ -38,10 +38,10 @@ wget https://repo.mysql.com/mysql80-community-release-el7-3.noarch.rpm
 rpm --import https://repo.mysql.com/RPM-GPG-KEY-mysql-2022
 
 # Install the MySQL repository package
-yum localinstall mysql80-community-release-el7-3.noarch.rpm -y
+sudo yum localinstall mysql80-community-release-el7-3.noarch.rpm -y
 
 # Install the MySQL community server package
-yum install mysql-community-server -y
+sudo yum install mysql-community-server -y
 
 # Change directory to the html directory
 
