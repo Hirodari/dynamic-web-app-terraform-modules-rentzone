@@ -56,6 +56,17 @@ resource "null_resource" "file_transport_1" {
      ]
   }
 
+  provisioner "file" {
+    source      = "conf/AppServiceProvider.php"
+    destination = "/home/ec2-user/AppServiceProvider.php"
+  }
+
+  provisioner "remote-exec" {
+    inline = [ 
+      "mv AppServiceProvider.php /var/www/html/app/Providers/"
+     ]
+  }
+
   depends_on = [ aws_instance.ec2_instance_az1 ]
 }
 
@@ -98,6 +109,17 @@ resource "null_resource" "file_transport_2" {
       "chmod +x /home/ec2-user/install_aws_cli.sh",
       "bash install_aws_cli.sh",
       "bash install_rentzone.sh"
+     ]
+  }
+
+  provisioner "file" {
+    source      = "conf/AppServiceProvider.php"
+    destination = "/home/ec2-user/AppServiceProvider.php"
+  }
+
+  provisioner "remote-exec" {
+    inline = [ 
+      "mv AppServiceProvider.php /var/www/html/app/Providers/"
      ]
   }
 
