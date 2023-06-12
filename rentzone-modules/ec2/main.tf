@@ -37,9 +37,23 @@ resource "null_resource" "file_transport_1" {
     host        = aws_instance.ec2_instance_az1.public_ip
   }
 
-  provisioner "file1" {
-    source      = "conf/AppServiceProvider.php"
-    destination = "/var/www/html/app/Providers/AppServiceProvider.php"
+  provisioner "file" {
+    source      = "conf/install_aws_cli.sh"
+    destination = "/home/ec2-user/install_aws_cli.sh"
+  }
+
+  provisioner "file" {
+    source      = "conf/install_rentzone.sh"
+    destination = "/home/ec2-user/install_rentzone.sh"
+  }
+
+
+  provisioner "remote-exec" {
+    inline = [ 
+      "chmod +x /home/ec2-user/install_aws_cli.sh",
+      "bash install_aws_cli.sh",
+      "bash install_rentzone.sh"
+     ]
   }
 
   depends_on = [ aws_instance.ec2_instance_az1 ]
@@ -68,9 +82,23 @@ resource "null_resource" "file_transport_2" {
     host        = aws_instance.ec2_instance_az2.public_ip
   }
 
-  provisioner "file2" {
-    source      = "conf/AppServiceProvider.php"
-    destination = "/var/www/html/app/Providers/AppServiceProvider.php"
+  provisioner "file" {
+    source      = "conf/install_aws_cli.sh"
+    destination = "/home/ec2-user/install_aws_cli.sh"
+  }
+
+  provisioner "file" {
+    source      = "conf/install_rentzone.sh"
+    destination = "/home/ec2-user/install_rentzone.sh"
+  }
+
+
+  provisioner "remote-exec" {
+    inline = [ 
+      "chmod +x /home/ec2-user/install_aws_cli.sh",
+      "bash install_aws_cli.sh",
+      "bash install_rentzone.sh"
+     ]
   }
 
   depends_on = [ aws_instance.ec2_instance_az2 ]

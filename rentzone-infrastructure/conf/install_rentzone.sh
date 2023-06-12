@@ -52,11 +52,11 @@ sudo yum install -y git
 
 # set up aws configs
 echo "installing jq"
-sudo yum install jq
+sudo yum install -y jq 
 echo "downloading aws configs script and setting up"
-aws s3 cp s3://s3-terraform-for-dynamic-web/install_aws_cli.sh . --profile devops
-sudo chmod +x install_aws_cli.sh
-./install_aws_cli.sh
+# aws s3 cp s3://s3-terraform-for-dynamic-web/install_aws_cli.sh . --profile devops
+# sudo chmod +x install_aws_cli.sh
+# ./install_aws_cli.sh
 
 
 # Set  environment variables from secret manager
@@ -116,3 +116,6 @@ sudo sed -i "/^DB_USERNAME=/ s/=.*$/=$RDS_MASTER_USERNAME/" .env
 
 # Use the sed command to search the .env file for a line that starts with DB_PASSWORD= and replace everything after the = character
 sudo sed -i "/^DB_PASSWORD=/ s/=.*$/=$RDS_DB_PASSWORD/" .env
+
+# start apache service
+sudo systemctl start httpd

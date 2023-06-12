@@ -73,3 +73,15 @@ module "ec2" {
   bastion_sg_id        = module.security-group.bastion_sg_id
   key_name             = var.key_name
 }
+
+# create Load Balancer
+module "ec2" {
+  source               = "git@github.com:Hirodari/dynamic-web-app-terraform-modules-rentzone.git//rentzone-modules/alb"
+  project_name         = local.project_name
+  environment = local.environment
+  alb_sg_id = module.security-group.alb_sg_id
+  public_subnet_az1_id = module.vpc.public_subnet_az1_id
+  public_subnet_az2_id = module.vpc.public_subnet_az2_id
+  vpc_id = module.vpc.vpc_id
+  certificate_arn = var.certificate_arn
+}

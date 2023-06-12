@@ -39,3 +39,6 @@ variable "record_name" {}
 # EC2 variables
 variable "key_name" {}
 variable "instance_type" {}
+
+# acm variables
+variable "certificate_arn" {}
